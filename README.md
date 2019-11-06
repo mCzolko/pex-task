@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/mCzolko/pex-task.svg?style=svg)](https://circleci.com/gh/mCzolko/pex-task)
+
 Requirements
 ------------
 
