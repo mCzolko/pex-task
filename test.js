@@ -1,9 +1,29 @@
 const Immutable = require('immutable');
 const assert = require('assert');
 
+function isListOfStrings(list) {
+  return list.every(item => typeof item === 'string');
+}
 
-function transformErrors() {
-  return Immutable.Map();
+function joinListOfStrings(list) {
+  return list.join('. ') + '.';
+}
+
+function transformErrors(errors, keepNestedKeys = [], nested = false) {
+  return errors.map((error, key) => {
+    if (keepNestedKeys.includes(key) || nested) {
+      return Immutable.List.isList(error) && isListOfStrings(error) ?
+        joinListOfStrings(error)
+      :
+        transformErrors(error, [], true);
+    }
+
+    return joinListOfStrings(
+      error
+        .flatten()
+        .toSet()
+    );
+  });
 }
 
 it('should tranform errors', () => {
@@ -43,7 +63,7 @@ it('should tranform errors', () => {
   // in this specific case,
   // errors for `url` and `urls` keys should be nested
   // see expected object below
-  const result = transformErrors();
+  const result = transformErrors(errors, Immutable.Set(['url', 'urls']));
 
   assert.deepEqual(result.toJS(), {
     name: 'This field is required.',
