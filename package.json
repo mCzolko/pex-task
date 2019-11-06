@@ -1,0 +1,25 @@
+{
+  "name": "pex-task",
+  "version": "1.0.0",
+  "main": "test.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "mocha --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mCzolko/pex-task.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mCzolko/pex-task/issues"
+  },
+  "homepage": "https://github.com/mCzolko/pex-task#readme",
+  "devDependencies": {
+    "mocha": "^6.2.2"
+  },
+  "dependencies": {
+    "immutable": "^4.0.0-rc.12"
+  }
+}
