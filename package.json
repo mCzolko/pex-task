@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/mCzolko/pex-task#readme",
   "devDependencies": {
-    "mocha": "^6.2.2"
+    "mocha": "^6.2.3"
   },
   "dependencies": {
     "immutable": "^4.0.0-rc.12"
